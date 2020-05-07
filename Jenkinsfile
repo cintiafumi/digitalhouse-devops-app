@@ -35,7 +35,7 @@ pipeline {
                 stage('Clone repository') {
                     steps {
                         script {
-                            if(env.GIT_BRANCH=='origin/dev'){
+                            if(env.GIT_BRANCH=='origin/homolog'){
                                 checkout scm
                             }
                             sh('printenv | sort')
@@ -47,7 +47,7 @@ pipeline {
                     steps {
                         script {
                             print "Environment will be : ${env.NODE_ENV}"
-                            docker.build("digitalhouse-devops:latest")
+                            docker.build("devops:latest")
                         }
                     }
                 }
@@ -56,7 +56,7 @@ pipeline {
                     steps {
                         script {
 
-                            docker.image("digitalhouse-devops:latest").withRun('-p 8030:3000') { c ->
+                            docker.image("devops:latest").withRun('-p 8030:3000') { c ->
                                 sh 'docker ps'
                                 sh 'sleep 10'
                                 sh 'curl http://127.0.0.1:8030/api/v1/healthcheck'
@@ -89,7 +89,7 @@ pipeline {
 
             steps { 
                 script {
-                    if(env.GIT_BRANCH=='origin/dev'){
+                    if(env.GIT_BRANCH=='origin/homolog'){
  
                         docker.withRegistry('https://402303658132.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awskey') {
                             docker.image('devops').pull()
@@ -124,7 +124,7 @@ pipeline {
 
             steps { 
                 script {
-                    if(env.GIT_BRANCH=='origin/prod'){
+                    if(env.GIT_BRANCH=='origin/producao'){
  
                         environment {
 
