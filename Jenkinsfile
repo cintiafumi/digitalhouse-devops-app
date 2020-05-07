@@ -71,8 +71,8 @@ pipeline {
                     steps {
                         echo 'Push latest para AWS ECR'
                         script {
-                            docker.withRegistry('https://933273154934.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awsdvops') {
-                                docker.image('digitalhouse-devops').push()
+                            docker.withRegistry('https://402303658132.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awskey') {
+                                docker.image('devops').push()
                             }
                         }
                     }
@@ -91,8 +91,8 @@ pipeline {
                 script {
                     if(env.GIT_BRANCH=='origin/dev'){
  
-                        docker.withRegistry('https://933273154934.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awsdvops') {
-                            docker.image('digitalhouse-devops').pull()
+                        docker.withRegistry('https://402303658132.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awskey') {
+                            docker.image('devops').pull()
                         }
 
                         echo 'Deploy para Desenvolvimento'
@@ -139,8 +139,8 @@ pipeline {
                         }
 
 
-                        docker.withRegistry('https://933273154934.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awsdvops') {
-                            docker.image('digitalhouse-devops').pull()
+                        docker.withRegistry('https://402303658132.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awskey') {
+                            docker.image('devops').pull()
                         }
 
                         echo 'Deploy para Producao'
