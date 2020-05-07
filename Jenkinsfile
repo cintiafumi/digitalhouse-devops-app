@@ -83,7 +83,7 @@ pipeline {
         stage('Deploy to Homolog') {
             agent {  
                 node {
-                    label 'dev'
+                    label 'homolog'
                 }
             }
 
@@ -118,7 +118,7 @@ pipeline {
         stage('Deploy to Producao') {
             agent {  
                 node {
-                    label 'prod'
+                    label 'producao'
                 }
             }
 
