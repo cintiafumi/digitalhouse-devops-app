@@ -4,7 +4,7 @@ pipeline {
 
     environment {
 
-        NODE_ENV="development"
+        NODE_ENV="homolog"
         AWS_ACCESS_KEY=""
         AWS_SECRET_ACCESS_KEY=""
         AWS_SDK_LOAD_CONFIG="0"
