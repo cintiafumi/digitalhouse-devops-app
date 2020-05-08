@@ -149,7 +149,7 @@ pipeline {
                         // sh "docker rm app1"
                         //sh "docker run -d --name app1 -p 8030:3000 933273154934.dkr.ecr.us-east-1.amazonaws.com/digitalhouse-devops:latest"
                         withCredentials([[$class:'AmazonWebServicesCredentialsBinding' 
-                            , credentialsId: 'prods3']]) {
+                            , credentialsId: 'producaos3']]) {
                           sh "docker run -d --name app1 -p 8030:3000 -e NODE_ENV=producao -e AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e BUCKET_NAME=digitalhouse-grupo2-producao 402303658132.dkr.ecr.us-east-1.amazonaws.com/devops:latest"
                         }
                         sh "docker ps"
